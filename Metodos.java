@@ -21,6 +21,31 @@ public class Metodos {
 
     }
 
+    public objTienda[][] llenarMatrizTienda(int dimension) {
+        objTienda[][] m = new objTienda[dimension][dimension];
+        for (int i = 0; i < m.length; i++) {
+            for (int j = 0; j < m.length; j++) {
+                objTienda o = new objTienda();
+                System.out.println("Ingrese la marca");
+                o.setMarca(sc.next());
+                System.out.println("ingrese la cantidad del producto");
+                o.setCantidad(sc.nextInt());
+                m[i][j] = o;
+            }
+        }
+        return m;
+
+    }
+
+    public void mostrarMatriz(objTienda[][] m) {
+        for (int i = 0; i < m.length; i++) {
+            for (int j = 0; j < m.length; j++) {
+                System.out.println("Marca: " + m[i][j].getMarca());
+                System.out.println("Cantidad: " + m[i][j].getCantidad());
+            }
+            System.out.println();
+        }
+    }
     public void mostrarMatriz(Producto[][] m) {
         for (int i = 0; i < m.length; i++) {
             for (int j = 0; j < m.length; j++) {
@@ -32,6 +57,17 @@ public class Metodos {
         }
     }
 
+    public int SumarCantidades(objTienda[][] m) {
+        int suma = 0;
+        for (int i = 0; i < m.length; i++) {
+            for (int j = 0; j < m.length; j++) {
+                suma = suma + m[i][j].getCantidad();
+            }
+        }
+        return suma;
+    }
+
+    
     public String MostrarposicionElemento(Producto[][] m) {
         String nombreBuscar = "";
         System.out.println("Ingrese el nombre del prooducto a buscar");
@@ -40,8 +76,7 @@ public class Metodos {
         for (int i = 0; i < m.length; i++) {
             for (int j = 0; j < m.length; j++) {
                 if (m[i][j].getNombre().toLowerCase().equals(nombreBuscar)) {
-                    result += "el producto se encuentra en la posicion: " + (i + 1) + "," + (j + 1
-                    ) + "\n";
+                    result += "el producto se encuentra en la posicion: " + (i + 1) + "," + (j + 1) + "\n";
                 }
             }
         }
