@@ -1,9 +1,9 @@
-public class objTienda {
+public class ObjTienda {
     private String Marca;
     private int Cantidad;
-    public objTienda() {
+    public ObjTienda() {
     }
-    public objTienda(String marca, int cantidad) {
+    public ObjTienda(String marca, int cantidad) {
         Marca = marca;
         Cantidad = cantidad;
     }

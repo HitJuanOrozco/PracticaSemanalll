@@ -1,9 +1,9 @@
-public class Producto {
+public class ObjProducto {
     private String nombre;
     private double precio;
     private int cantidad;
 
-    public Producto() {
+    public ObjProducto() {
 
     }
 

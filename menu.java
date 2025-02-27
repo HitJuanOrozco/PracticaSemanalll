@@ -21,20 +21,33 @@ public class Menu {
             opcion = sc.nextInt();
 
             switch (opcion) {
-                case 1:
-                    Punto1 objP1 = new Punto1();
-                    objP1.P1(dimension);
-                    break;
-                case 2:
-                    Punto2 objP2 = new Punto2();
-                    objP2.P2(dimension);
-                    break;
 
-                default:
-                System.out.println("hasta pronto");
-                    continuar = false;
-                    break;
+            case 1:
+                Punto1 objP1 = new Punto1();
+                objP1.P1(dimension);
+                break;
+            case 2:
+                Punto2 objP2 = new Punto2();
+                objP2.P2(dimension);
+                break;
+            case 3:
+                Punto3 objP3 = new Punto3();
+                objP3.P3();
+                break;
+            case 4:
+                Punto4 objP4 = new Punto4();
+                objP4.P4();
+                break;
+            case 5:
+                Punto5 objP5 = new Punto5();
+                objP5.P5();
+                break;
+
+            default:
+                System.out.println("Hasta pronto");
+                continuar = false;
+                break;
+        }
             }
         }
     }
-}
