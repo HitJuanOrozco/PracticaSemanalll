@@ -3,11 +3,12 @@ import java.util.Scanner;
 public class Metodos {
     Scanner sc = new Scanner(System.in);
 
-    public Producto[][] llenarMatriz(int dimension) {
-        Producto[][] m = new Producto[dimension][dimension];
+    //Suma de cada columna
+    public ObjProducto[][] llenarMatriz(int dimension) {
+        ObjProducto[][] m = new ObjProducto[dimension][dimension];
         for (int i = 0; i < m.length; i++) {
             for (int j = 0; j < m.length; j++) {
-                Producto o = new Producto();
+                ObjProducto o = new ObjProducto();
                 System.out.println("Ingrese el nombre del producto");
                 o.setNombre(sc.next());
                 System.out.println("Ingrese el precio del producto");
@@ -21,11 +22,12 @@ public class Metodos {
 
     }
 
-    public objTienda[][] llenarMatrizTienda(int dimension) {
-        objTienda[][] m = new objTienda[dimension][dimension];
+    //Llenar matriz de tiendas
+    public ObjTienda[][] llenarMatrizTienda(int dimension) {
+        ObjTienda[][] m = new ObjTienda[dimension][dimension];
         for (int i = 0; i < m.length; i++) {
             for (int j = 0; j < m.length; j++) {
-                objTienda o = new objTienda();
+                ObjTienda o = new ObjTienda();
                 System.out.println("Ingrese la marca");
                 o.setMarca(sc.next());
                 System.out.println("ingrese la cantidad del producto");
@@ -37,7 +39,8 @@ public class Metodos {
 
     }
 
-    public void mostrarMatriz(objTienda[][] m) {
+    //Mostrar matriz de tiendas
+    public void mostrarMatriz(ObjTienda[][] m) {
         for (int i = 0; i < m.length; i++) {
             for (int j = 0; j < m.length; j++) {
                 System.out.println("Marca: " + m[i][j].getMarca());
@@ -46,7 +49,9 @@ public class Metodos {
             System.out.println();
         }
     }
-    public void mostrarMatriz(Producto[][] m) {
+
+    //Mostrar matriz de productos
+    public void mostrarMatriz(ObjProducto[][] m) {
         for (int i = 0; i < m.length; i++) {
             for (int j = 0; j < m.length; j++) {
                 System.out.println("Nombre: " + m[i][j].getNombre());
@@ -57,7 +62,8 @@ public class Metodos {
         }
     }
 
-    public int SumarCantidades(objTienda[][] m) {
+    //Suma cantidades
+    public int SumarCantidades(ObjTienda[][] m) {
         int suma = 0;
         for (int i = 0; i < m.length; i++) {
             for (int j = 0; j < m.length; j++) {
@@ -67,8 +73,8 @@ public class Metodos {
         return suma;
     }
 
-    
-    public String MostrarposicionElemento(Producto[][] m) {
+    //Mostrar la posicion de un elemento
+    public String MostrarposicionElemento(ObjProducto[][] m) {
         String nombreBuscar = "";
         System.out.println("Ingrese el nombre del prooducto a buscar");
         nombreBuscar = sc.next();
@@ -81,5 +87,57 @@ public class Metodos {
             }
         }
         return result;
+    }
+
+    //Llenar matriz de enteros
+    public int[][] llenarMatrizEnteros(int dimension) {
+        int[][] matriz = new int[dimension][dimension];
+        for (int i = 0; i < dimension; i++) {
+            for (int j = 0; j < dimension; j++) {
+                System.out.println("Ingrese un número para la posición [" + (i+1) + "][" + (j+1) + "]:");
+                while (!sc.hasNextInt()) {
+                    System.out.println("Error: Ingrese un número entero.");
+                    sc.next();
+                }
+                matriz[i][j] = sc.nextInt();
+            }
+        }
+        return matriz;
+    }
+
+    //Suma de cada fila
+    public int[] sumarFilas(int[][] matriz) {
+    int[] sumaFilas = new int[matriz.length];
+    for (int i = 0; i < matriz.length; i++) {
+        for (int j = 0; j < matriz[i].length; j++) {
+            sumaFilas[i] += matriz[i][j];
+        }
+    }
+        return sumaFilas;
+    }
+
+    //Suma de cada columna
+    public int[] sumarColumnas(int[][] matriz) {
+        int[] sumaColumnas = new int[matriz[0].length];
+        for (int i = 0; i < matriz[0].length; i++) {
+            for (int j = 0; j < matriz.length; j++) {
+                sumaColumnas[i] += matriz[j][i];
+            }
+        }
+        return sumaColumnas;
+    }
+
+    //Convertir matriz a vector
+    public int[] matrizAvector(int[][] matriz) {
+        int rows = matriz.length;
+        int cols = matriz[0].length;
+        int[] vector = new int[rows * cols];
+        int index = 0;
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                vector[index++] = matriz[i][j];
+            }
+        }
+        return vector;
     }
 }
